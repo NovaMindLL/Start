@@ -30,13 +30,16 @@ public class Main {
         System.out.println();
         System.out.println("Сумма2 " + sum2);
         System.out.println("Среднее2 " + sr2);
-        if (sr1 < sr2) {
-            System.out.println("1 массив меньше");
-        }
-        if (sr1 > sr2) {
-            System.out.println("1 массив больше");
-        } else {
-            System.out.println("равны");
-        }
+        /*
+         * if (sr1 < sr2) {
+         * System.out.println("1 массив меньше");
+         * }
+         * if (sr1 > sr2) {
+         * System.out.println("1 массив больше");
+         * } else {
+         * System.out.println("равны");
+         * }
+         */
+        System.out.println();
     }
 }
