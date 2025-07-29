@@ -17,7 +17,7 @@ public class Main {
             String line;
             while ((line = reader.readLine()) != null)
                 lines.add(line);
-        } catch (IOException egnored) {
+        } catch (IOException ignored) {
 
         }
         System.out.println(lines);
