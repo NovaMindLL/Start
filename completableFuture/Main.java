@@ -23,21 +23,26 @@ public class Main {
          * System.out.println("Hi"),
          * Executors.newCachedThreadPool());
          */
-        CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
-
-            try {
-                Thread.sleep(500);
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return "Hi";
-        });
-        try {
-            System.out.println(future.get());
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
+        /*
+         * CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+         * 
+         * try {
+         * Thread.sleep(500);
+         * 
+         * } catch (InterruptedException e) {
+         * e.printStackTrace();
+         * }
+         * return "Hi";
+         * });
+         * try {
+         * System.out.println(future.get());
+         * } catch (InterruptedException | ExecutionException e) {
+         * e.printStackTrace();
+         * }
+         */
+        CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> "Hi");
+        future.thenAccept(result -> System.out.println(result));
+        future.join();
 
     }
 }
