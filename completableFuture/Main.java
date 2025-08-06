@@ -43,6 +43,8 @@ public class Main {
         CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> "Hi");
         future.thenAccept(result -> System.out.println(result));
         future.join();
+        
+     
 
     }
 }
