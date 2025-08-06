@@ -1,10 +1,8 @@
 package Comparable;
 
-public interface Comparable<T> {
-    public int compareTo(T o);
-}
+import java.util.*;
 
-public class House {
+public class House implements Comparable<House> {
     int area;
     int price;
     String city;
@@ -18,6 +16,11 @@ public class House {
     }
 
     @Override
+    public int compareTo(House other) {
+        return Integer.compare(this.area, other.area);
+    }
+
+    @Override
     public String toString() {
         return "House" +
                 "area" + area +
@@ -26,10 +29,18 @@ public class House {
     }
 }
 
-public class Main {
+class Main {
     public static void main(String[] args) {
-        House house = new House(50, 17, "Moscow", false);
-        House house2 = new House(70, 8, "Sarov", false);
-        House house3 = new House(99, 25, "Samara", false);
+        List<House> houses = Arrays.asList(
+                new House(50, 17, "Moscow", false),
+                new House(70, 8, "Sarov", false),
+                new House(99, 25, "Samara", false));
+
+        Collections.sort(houses);
+
+        for (House house : houses) {
+            System.out.println(house);
+        }
+
     }
 }
