@@ -24,18 +24,23 @@ class Connection {
 }
 
 public class Main {
-  public static void main(String[] args) {
-    List<Connection> network = Arrays.asList(
-        new Connection(A, B),
-        new Connection(A, C),
-        new Connection(A, D),
-        new Connection(B, C));
+   public static void main(String[] args) {
+      List<Connection> network = Arrays.asList(
+            new Connection("A", "B"),
+            new Connection("A", "C"),
+            new Connection("A", "D"),
+            new Connection("B", "C"));
 
-        List<String> identity = new ArrayList<>();
-        BiFunction<List<String>, Connection, List<String>> accumulator = (strings, connection) -> {
-        strings.add(connection.getTo());
-        return strings;
-        }
-        
-  }
+      List<String> identity = new ArrayList<>();
+      BiFunction<List<String>, Connection, List<String>> accumulator = (strings, connection) -> {
+         strings.add(connection.getTo());
+         return strings;
+      };
+      List<String> result = network.stream()
+            .reduce(identity, accumulator, (list1, list2) -> {
+               list1.addAll(list2);
+               return list1;
+            });
+      System.out.println(result);
+   }
 }
