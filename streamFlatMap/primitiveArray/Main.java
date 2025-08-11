@@ -1,5 +1,6 @@
 package streamFlatMap.primitiveArray;
 
+import java.util.List;
 import java.util.stream.Collector;
 
 public class Main {
@@ -12,7 +13,7 @@ public class Main {
 
 Optional  <Person> person = persons.stream()
 .filter(p-> p.getAge()>30)
-.findFirst();
+.findFirst()
 .findAny();//Ищет любого больше 30
 
 long count = person.stream()
