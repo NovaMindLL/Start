@@ -2,7 +2,7 @@ package metodFunc;
 
 public class Main {
     public static void main(String[] args) {
-        int va1 = calcSum(1, 2);
+        int va1 = calcSum(2, -2);
         System.out.println(va1);
     }
 
@@ -11,6 +11,9 @@ public class Main {
     // System.out.println(sum);
     static int calcSum(int a, int b) {
         int sum = a + b;
+        if (sum == 0) {
+            sum = calcSum(2, -1);
+        }
         return sum;
     }
 }
