@@ -1,26 +1,29 @@
 package Kod;
 
 public class Main {
-    static int cont = 0;
-
     public static void main(String[] args) {
-        String word = "Код";
-        String word1 = word.toLowerCase();
-        String text = "Код - код - код — и день пролетел, "
-                + "Код - код - код — и ночь не заметил, "
-                + "Код - код - код — багов стало чуть меньше, "
-                + "Код - код - код — и опять всё не так, "
-                + "Код - код - код… но без него скучно.";
-        String text1 = text.toLowerCase();
 
-        System.out.println("Слово «" + word + "» встречается - " + quantity(word1, text1) + " раз");
+        String word = "Код";
+        String text = "Код - код - код — и день пролетел," +
+
+                "Код - код - код — и ночь не заметил," +
+
+                "Код - код - код — багов стало чуть меньше," +
+
+                "Код - код - код — и опять всё не так," +
+
+                "Код - код - код… но без него скучно.";
+
+        System.out.println("Слово «" + word + "» встречается - " + quantity(text, word) + " раз");
 
     }
 
-    public static int quantity(String word1, String text1) {
-        String[] words = text1.split(" |…");
+    public static int quantity(String text, String word) {
+
+        String[] words = text.split("[\\s\\-—…,“”.;]+");
+        int cont = 0;
         for (String w : words) {
-            if (w.equals(word1)) {
+            if (w.equalsIgnoreCase(word)) {
                 cont++;
             }
         }
