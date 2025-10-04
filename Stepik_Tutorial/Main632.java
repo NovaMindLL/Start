@@ -1,29 +1,31 @@
 package Stepik_Tutorial;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import java.util.*;
 import java.util.stream.*;
 
 public class Main632 {
     public static void main(String[] args) {
-        List<String> data = readInput();
+        List<String> data = List.of("a", "a", "a", "b", "b", "c", "c", "a", "a", "a");
         StringBuilder result = new StringBuilder();
 
-        Map<String, Long> count = data.stream()
-                .collect(Collectors.groupingBy(s -> s, Collectors.counting()));
-        result = new StringBuilder(count.entrySet().stream()
-                .map(e -> e.getKey() + e.getValue())
+        int count = 1;
+        for (int i = 1; i < data.size(); i++) {
+            if (data.get(i).equals(data.get(i - 1))) {
+                count++;
 
-                .collect(Collectors.joining("")));
+            } else {
+                result.append(data.get(i - 1)).append(count);
+                count = 1;
+
+            }
+
+        }
+        if (!data.isEmpty()) {
+            result.append(data.get(data.size() - 1)).append(count);
+        }
+        ; // последний символ
 
         System.out.println(result);
     }
 
-    public static List<String> readInput() {
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        return new Gson().fromJson(input, new TypeToken<List<String>>() {
-        }.getType());
-    }
 }
